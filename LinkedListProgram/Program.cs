@@ -116,6 +116,36 @@
         }
 
 
+        //Method for deleting value at position in linked list
+        public void DeleteNodePosition(int position)
+        {
+            Node temp = head;
+           
+            //Checking if the linked list is empty
+            if (head == null)
+            {
+                return;
+            }
+            
+            if(position == 0)
+            {
+                head = temp.next;
+                return;
+            }
+            //Checking for the position in linked list and then deleting the node
+            for (int index = 0; temp != null && index < position-1; index++)
+            {
+                temp = temp.next;
+            }
+            if (temp == null || temp.next == null)
+            {
+                return;
+            }
+
+            Node previous = temp.next.next;
+            temp.next = previous;    
+        }
+
 
         //Method for displaying the linked list
         public void DisplayNode()
@@ -157,6 +187,10 @@
             Console.WriteLine();
 
             node.DeleteNodeEnd();
+            node.DisplayNode();
+            Console.WriteLine();
+
+            node.DeleteNodePosition(1);
             node.DisplayNode();
 
 
