@@ -1,13 +1,13 @@
 ﻿namespace LinkedList
 {
     //Creating a Node in Linked list
-    public class Node
+    public class Node<T> where T : IComparable<T>
     {
-        public int data;
-        public Node next;
-        public Node head;
+        public T data;
+        public Node<T> next;
+        public Node<T> head;
 
-        public Node(int x)
+        public Node(T x)
         {
             data = x;
             next = null;
@@ -18,9 +18,9 @@
         }
 
         //Method for inserting value at start of the linked list
-        public void InsertNodeStart(int data)
+        public void InsertNodeStart(T data)
         {
-            Node newNode = new Node(data);
+            Node<T> newNode = new Node<T>(data);
             //Checking if the linked list is empty
             if (head == null)
             {
@@ -36,10 +36,10 @@
         }
 
         //Method for inserting value at end of the linked list
-        public void InsertNodeEnd(int data)
+        public void InsertNodeEnd(T data)
         {
-            Node newNode = new Node(data);
-            Node temp = head;
+            Node<T> newNode = new Node<T>(data);
+            Node<T> temp = head;
 
             //Checking if the linked list is empty
             if (head == null)
@@ -59,10 +59,10 @@
         }
 
         //Method for inserting value at position in linked list
-        public void InsertNodePosition(int position, int data)
+        public void InsertNodePosition(int position, T data)
         {
-            Node newNode = new Node(data);
-            Node temp = head;
+            Node<T> newNode = new Node<T>(data);
+            Node<T> temp = head;
 
             //Checking if the linked list is empty
             if (head == null)
@@ -95,8 +95,8 @@
         //Method for deleting value at the end of the linked list
         public void DeleteNodeEnd()
         {
-            Node temp = head;
-            Node previous = null;
+            Node<T> temp = head;
+            Node<T> previous = null;
 
             //Checking if the linked list is empty
             if (head == null)
@@ -119,7 +119,7 @@
         //Method for deleting value at position in linked list
         public void DeleteNodePosition(int position)
         {
-            Node temp = head;
+            Node<T> temp = head;
            
             //Checking if the linked list is empty
             if (head == null)
@@ -142,7 +142,7 @@
                 return;
             }
 
-            Node previous = temp.next.next;
+            Node<T> previous = temp.next.next;
             temp.next = previous;    
         }
 
@@ -150,7 +150,7 @@
         //Method for displaying the linked list
         public void DisplayNode()
         {
-            Node temp = head;
+            Node<T> temp = head;
             while (temp != null)
             {
                 Console.Write(temp.data + "->");
@@ -164,7 +164,7 @@
     {
         static void Main(string[] args)
         {
-            Node node = new Node();
+            Node<int> node = new Node<int>();
 
             node.InsertNodeStart(10);
             node.DisplayNode();
@@ -192,8 +192,43 @@
 
             node.DeleteNodePosition(1);
             node.DisplayNode();
+            Console.WriteLine();
+            Console.WriteLine();
+
+
+            Node<string> node1 = new Node<string>();
+
+            node1.InsertNodeStart("Hello");
+            node1.DisplayNode();
+            Console.WriteLine();
+
+            node1.InsertNodeStart("World");
+            node1.DisplayNode();
+            Console.WriteLine();
+
+            node1.InsertNodeEnd("abc");
+            node1.DisplayNode();
+            Console.WriteLine();
+
+            node1.InsertNodePosition(2, "Friend");
+            node1.DisplayNode();
+            Console.WriteLine();
+
+            node1.DeleteNodeStart();
+            node1.DisplayNode();
+            Console.WriteLine();
+
+            node1.DeleteNodeEnd();
+            node1.DisplayNode();
+            Console.WriteLine();
+
+            node1.DeleteNodePosition(1);
+            node1.DisplayNode();
 
 
         }
+
+
     }
-}
+    }
+
