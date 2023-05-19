@@ -92,6 +92,31 @@
             head = head.next;
         }
 
+        //Method for deleting value at the end of the linked list
+        public void DeleteNodeEnd()
+        {
+            Node temp = head;
+            Node previous = null;
+
+            //Checking if the linked list is empty
+            if (head == null)
+            {
+                return;
+            }
+            else
+            {
+                //Traversing till the second last node
+                while (temp.next != null)
+                {
+                    previous = temp;
+                    temp = temp.next;
+                }
+                previous.next = null;
+            }
+        }
+
+
+
         //Method for displaying the linked list
         public void DisplayNode()
         {
@@ -129,6 +154,11 @@
 
             node.DeleteNodeStart();
             node.DisplayNode();
+            Console.WriteLine();
+
+            node.DeleteNodeEnd();
+            node.DisplayNode();
+
 
         }
     }
