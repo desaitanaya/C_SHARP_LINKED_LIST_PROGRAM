@@ -81,6 +81,17 @@
             }
         }
 
+        //Method for deleting value at start of the linked list
+        public void DeleteNodeStart()
+        {
+            //Checking if the linked list is empty
+            if (head == null)
+            {
+                return;
+            }
+            head = head.next;
+        }
+
         //Method for displaying the linked list
         public void DisplayNode()
         {
@@ -113,6 +124,10 @@
             Console.WriteLine();
 
             node.InsertNodePosition(2, 15);
+            node.DisplayNode();
+            Console.WriteLine();
+
+            node.DeleteNodeStart();
             node.DisplayNode();
 
         }
