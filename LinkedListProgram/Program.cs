@@ -58,6 +58,29 @@
 
         }
 
+        //Method for inserting value at position in linked list
+        public void InsertNodePosition(int position, int data)
+        {
+            Node newNode = new Node(data);
+            Node temp = head;
+
+            //Checking if the linked list is empty
+            if (head == null)
+            {
+                return;
+            }
+            else
+            {
+                //Checking for the position in linked list and then inserting the new node
+                for (int index = 0; index < position - 1; index++)
+                {
+                    newNode.next = temp.next;
+                    temp.next = newNode;
+                }
+                temp = temp.next;
+            }
+        }
+
         //Method for displaying the linked list
         public void DisplayNode()
         {
@@ -78,8 +101,18 @@
             Node node = new Node();
 
             node.InsertNodeStart(10);
+            node.DisplayNode();
+            Console.WriteLine();
+
             node.InsertNodeStart(20);
+            node.DisplayNode();
+            Console.WriteLine();
+
             node.InsertNodeEnd(30);
+            node.DisplayNode();
+            Console.WriteLine();
+
+            node.InsertNodePosition(2, 15);
             node.DisplayNode();
 
         }
