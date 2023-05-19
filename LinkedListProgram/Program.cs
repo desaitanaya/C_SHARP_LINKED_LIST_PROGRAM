@@ -35,6 +35,29 @@
 
         }
 
+        //Method for inserting value at end of the linked list
+        public void InsertNodeEnd(int data)
+        {
+            Node newNode = new Node(data);
+            Node temp = head;
+
+            //Checking if the linked list is empty
+            if (head == null)
+            {
+                head = newNode;
+            }
+            else
+            {
+                while (temp.next != null)
+                {
+                    temp = temp.next;
+                }
+                //Inserting a new node at the end
+                temp.next = newNode;
+            }
+
+        }
+
         //Method for displaying the linked list
         public void DisplayNode()
         {
@@ -56,7 +79,7 @@
 
             node.InsertNodeStart(10);
             node.InsertNodeStart(20);
-
+            node.InsertNodeEnd(30);
             node.DisplayNode();
 
         }
